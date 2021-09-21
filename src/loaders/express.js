@@ -17,10 +17,6 @@ export default async (app) => {
     })
   )
 
-  // Useful if you're behind a reverse proxy (Heroku, Bluemix, AWS ELB, Nginx, etc)
-  // It shows the real origin IP in the heroku or Cloudwatch logs
-  app.enable('trust proxy');
-
   // Transforms the raw string of req.body into json
   app.use(express.json());
 
