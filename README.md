@@ -1,16 +1,11 @@
 <br/>
 <p align="center">
-  <h3 align="center">Thomas and the Wolf API</h3>
+  <h1 align="center">Thomas and the Wolf API</h1>
 
   <p align="center">
     A simple API designed in Node.js with Express that allows you to play Thomas and the Wolf directly using queries to the server.
     <br/>
     <br/>
-    <a href="https://github.com/abnazhor/thomas-and-the-wolf"><strong>Explore the docs »</strong></a>
-    <br/>
-    <br/>
-    <a href="https://github.com/abnazhor/thomas-and-the-wolf">View Demo</a>
-    .
     <a href="https://github.com/abnazhor/thomas-and-the-wolf/issues">Report Bug</a>
     .
     <a href="https://github.com/abnazhor/thomas-and-the-wolf/issues">Request Feature</a>
@@ -29,8 +24,8 @@
 
 ## Built With
 
-Node.js
-Express.js
+* Node.js
+* Express.js
 
 ## Getting Started
 
