@@ -16,9 +16,7 @@ export default app => {
         // Returns entity information as a response.
         res.status(200).send({
             message: `Current ${targetEntityName} position`,
-            details: {
-                data
-            },
+            data,
             code: 200,
             description: `Current ${targetEntityName} position in the current game`
         })
@@ -36,7 +34,6 @@ export default app => {
         // Check if any of the four directions is included before doing anything
         if (["UP", "DOWN", "LEFT", "RIGHT"].includes(upperCaseDirection)) {
             let nextStepResult = {};
-            let errorMessage = "";
 
             try {
                 // Calls the Game Service, which is the one that
@@ -58,23 +55,28 @@ export default app => {
                     nextStepResult.thomas.column === nextStepResult.wolf.column)) {
                     res.status(200).send({
                         message: "Successfully updated Thomas position",
-                        details: {
-                            data: {
-                                thomas: nextStepResult.thomas,
-                                wolf: nextStepResult.wolf
-                            }
+                        data: {
+                            thomas: nextStepResult.thomas,
+                            wolf: nextStepResult.wolf
                         },
                         description: "Thomas position has been updated. Wolf position has been updated according to the movement made by the player"
-                    })
-                // In other case, sends a message with "You lost"
+                    });
+                } else if (nextStepResult.thomas.row === 7 && nextStepResult.thomas.column === 1) {
+                    res.status(200).send({
+                        message: "You won!",
+                        data: {
+                            thomas: nextStepResult.thomas,
+                            wolf: nextStepResult.wolf
+                        },
+                        description: "Well done, Thomas has successfully arrived the exit of the maze."
+                    });
+                    // In other case, sends a message with "You lost"
                 } else {
                     res.status(200).send({
                         message: "You lost!",
-                        details: {
-                            data: {
-                                thomas: nextStepResult.thomas,
-                                wolf: nextStepResult.wolf
-                            }
+                        data: {
+                            thomas: nextStepResult.thomas,
+                            wolf: nextStepResult.wolf
                         },
                         description: "Wolf has eaten Thomas before he could escape from the maze. Poor Thomas..."
                     });
@@ -86,7 +88,6 @@ export default app => {
                 res.status(400).send(response.generateErrorResponse({
                     message: err.message,
                     code: 400,
-                    details: {},
                     description: "Unable to move to the selected step. Please try again in another direction."
                 }))
             }
@@ -96,7 +97,6 @@ export default app => {
                 message: "Wrong input",
                 code: 400,
                 description: "Wrong input. Please use UP, DOWN, LEFT, RIGHT to move.",
-                details: {}
             }))
         }
     });

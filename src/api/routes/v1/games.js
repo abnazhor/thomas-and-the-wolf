@@ -19,13 +19,10 @@ export default app => {
 
             res.status(200).send({
                 message: "Game has been successfully started",
-                details: {
-                    data: {
-                        wolf,
-                        thomas,
-                        layout
-
-                    }
+                data: {
+                    wolf,
+                    thomas,
+                    layout
                 },
                 code: 200
             })
@@ -34,7 +31,6 @@ export default app => {
             // This makes possible the ability to resume sessions without having to handle anything else.
             res.status(403).send(response.generateErrorResponse({
                 message: "The game has already been started",
-                details: {},
                 description: "The game has been already started. To start a new one, please delete the current game.",
                 code: 403
             }))
@@ -47,7 +43,6 @@ export default app => {
         req.session.destroy();
         res.status(200).send({
             message: "Current game has been successfully finished",
-            details: {},
             description: "Current game has been successfully finished. To start a new one, generate a new game",
             code: 200
         });
@@ -58,7 +53,7 @@ export default app => {
         const { wolf, thomas, puzzleId } = req.session;
 
         res.status(200).send({
-            message: "",
+            message: "Basic information about the current game status",
             details: {
                 wolf,
                 thomas,

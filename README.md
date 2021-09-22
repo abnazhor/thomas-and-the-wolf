@@ -21,6 +21,8 @@
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
 * [Usage](#usage)
+* [Testing](#testing)
+* [Improvements](#future-improvements)
 
 ## Built With
 
@@ -28,8 +30,6 @@
 * Express.js
 
 ## Getting Started
-
-Installation of this server is as easy as it seems.
 
 ### Prerequisites
 
@@ -61,3 +61,16 @@ To run the server, type
 ```sh
 npm start
 ```
+
+## Testing
+To test the API, type
+```sh
+npm run test
+```
+
+## Future Improvements
+Some things that could be done in a future version could be:
+* Add a mode that could deploy a web application done in any framework to display game interface easily.
+* Add support for multiple games at the same time for every session
+* Add achievements, counting the number of moves that the player does in every session.
+* Add more puzzles, as it is already supported but there is currently only one.

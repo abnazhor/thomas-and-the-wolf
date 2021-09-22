@@ -1,5 +1,5 @@
 export default {
-    generateErrorResponse: ({ message, details, description, code }) => {
+    generateErrorResponse: ({ message, details = {}, description, code }) => {
         let errorObject = {};
         const errorCodeList = {
             "400": "Invalid syntax for this request was provided.",
@@ -11,7 +11,6 @@ export default {
         if (message && details && description && code) {
             errorObject = {
                 message,
-                details,
                 description,
                 httpResponse: {
                     code,
