@@ -71,7 +71,7 @@
       }
     },
     
-    "/games/position": {
+    "/games/status": {
       "get": {
         "tags": [
           "games"
