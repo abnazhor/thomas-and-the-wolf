@@ -1,0 +1,191 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "A simple API designed in Node.js with Express that allows you to play Thomas and the Wolf directly using queries to the server. ",
+    "version": "1.0.0",
+    "title": "Thomas and the Wolf"
+  },
+  "host": "localhost",
+  "basePath": "/v1",
+  "tags": [
+    {
+      "name": "games",
+      "description": "Everything related to game functionality"
+    },
+    {
+      "name": "positions",
+      "description": "Everything about movement in the game"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/games": {
+      "post": {
+        "tags": [
+          "games"
+        ],
+        "summary": "Add a new pet to the store",
+        "description": "",
+        "consumes": [
+          "application/json",
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Puzzle ID to start the game",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Puzzle"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Game has been successfully started"
+          },
+          "403": {
+            "description": "Game is already running"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "games"
+        ],
+        "summary": "Stops current game",
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Game has been successfully stopped"
+          }
+        }
+      }
+    },
+    
+    "/games/position": {
+      "get": {
+        "tags": [
+          "games"
+        ],
+        "summary": "Gets information about the current status of the game",
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+    },
+    "/positions/wolf": {
+      "get": {
+        "tags": [
+          "positions"
+        ],
+        "summary": "Gets wolf position in the current game",
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns wolf's position"
+          }
+        }
+      }
+    },
+    "/positions/thomas": {
+      "get": {
+        "tags": [
+          "positions"
+        ],
+        "summary": "Gets wolf position in the current game",
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns wolf's position"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "positions"
+        ],
+        "summary": "Moves thomas in one direction",
+        "description": "",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Thomas position based in rows and columns",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Direction"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Thomas has been successfully moved and game has been updated"
+          },
+          "400": {
+            "description": "Errors related to wrong inputs or not being able to move"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Position": {
+      "type": "object",
+      "properties": {
+        "row": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "column": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "Puzzle": {
+      "type": "object",
+      "properties": {
+        "puzzleId": {
+          "type": "string"
+        }
+      }
+    },
+    "Direction": {
+      "type": "object",
+      "properties": {
+        "direction": {
+          "type": "string",
+          "pattern": "(UP|DOWN|LEFT|RIGHT)"
+        }
+      }
+    },
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}

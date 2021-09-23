@@ -61,6 +61,7 @@ To run the server, type
 ```sh
 npm start
 ```
+After executing this, application with automatically run over port 3000.
 
 ## Testing
 To test the API, type
